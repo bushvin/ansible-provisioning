@@ -70,6 +70,11 @@ options:
       - As a safeguard, without force, hpilo_boot will refuse to reboot a server that is already running.
     default: no
     choices: [ "yes", "no" ]
+  ssl_version:
+    description:
+      - Change the ssl_version used
+    default: TLSv1
+    choices: ['SSLv3','SSLv23','TLSv1','TLSv1_1','TLSv1_2']
 examples:
   - description: Task to boot a system using an ISO from an HP iLO interface only if the system is an HP server
     code: |
@@ -119,7 +124,7 @@ def main():
             image = dict(default=None),
             state = dict(default='boot_once', choices=['boot_always', 'boot_once', 'connect', 'disconnect', 'no_boot', 'poweroff']),
             force = dict(default='no', choices=BOOLEANS),
-            ssl_version = dict(default='TLSv1', choices=['SSLv3','SSLv23','TLSv1','TLSv1_1','TLSv1_2']
+            ssl_version = dict(default='TLSv1', choices=['SSLv3','SSLv23','TLSv1','TLSv1_1','TLSv1_2']),
         )
     )
 
