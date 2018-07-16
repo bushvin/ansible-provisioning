@@ -80,7 +80,7 @@ def main():
             host = dict(required=True, aliases=['name']),
             # FIXME: Allow to query a specific name server for DNS lookup
 #            nameserver = dict(),
-            full = dict(default='no', choices=BOOLEANS),
+            full = dict(default='no', type=bool),
             gateway = dict(default='last', choices=['none', 'first', 'last']),
             inventory = dict(default='/etc/ansible/network-inventory.yml'),
         )
